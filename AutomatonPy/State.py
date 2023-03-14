@@ -1,4 +1,6 @@
 import collections
+
+
 class State:
     def __init__(self, isFinalState, isDeathState, name):
         self.isFinalState = isFinalState

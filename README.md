@@ -1,52 +1,67 @@
-$S -> 0A$
+# Implentation of computational methods | C1
+> Professor: Enrique Garcia Ceja
 
-$S -> 1B$
+## Sets and functions
 
-$S -> \epsilon$
+### Operations: Cartesian product
 
-$A -> 0S$
+A x B is the set of all pairs such that a is in A and b is in B.
 
-$A -> 1S$
+> What's cardinality?
+> It's the numeber of elements in the set
 
-$A -> \epsilon$
+### Partitions
+A partition P is aset of non empty subsets of A such that every element is in exactly one subset.
 
-$B -> 0S$
+### Operations: Power set
+Is the set of all possible subsets of A.
 
-$B -> 1S$
+### Distance between two sets A and B 
 
-$B -> \epsilon$
+- It's useful for machine learning
+- The Jaccard index between two sets is defined by:
+  - $J(A, B) = |A у B| / |A U B|$
+  - $J_1 = 1 - J(A,B)$
 
+### Relation
 
-----
-$S -> 0A$
-
-$S -> 1B$
-
-$A -> 0S$
-
-$A -> 1S$
-
-$A -> \epsilon$
-
-$B -> 0S$
-
-$B -> 1S$
-
-$B -> \epsilon$
-
-$S -> 0S0$
-
-$S -> 1S1$
+- A relation is symmetric if $(a,b) \in R \And (b,a) \in R$
 
 
+# C2
 
-----
+## Symbol
+- The most basic unit of a language is a symbol
+## Alphabet
+- It is denoted with $\sum$
+- English alphabet is $\sum{a, b, ..., z}$
 
-S -> 1B
-s ->0C
-B -> 0D
-B -> 1S
-D -> 1C
-D -> 0B
-C
+## Length
+- Is denoted with $|x|$
 
+## Prefix
+- $p$ is a prefix of $w$ if there exist a string $y$ such that $w=py$
+
+# Language
+## Power
+- The power of a language L is:
+- $L^n=$
+
+### Chomsky Hierarchy
+
+# Deterministic Finite Automata | C3
+
+
+## Accepted words (languages)
+- Finite automatons can be used to recognize words
+- A wprd
+
+
+$\sigma = {
+    ((q_0,0),q_1),((q_0,1),q_2),
+    ((q_1,0),q_3),((q_1,1),q_0),
+    ((q_1,0),q_0),((q_1,1),q_0),
+    ((q_1,0),q_0),((q_1,1),q_0)
+}$
+
+0010

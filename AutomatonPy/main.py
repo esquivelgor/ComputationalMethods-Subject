@@ -4,7 +4,7 @@
 # Guillermo Esquivel Ortiz | A01625621
 # Moises Hiram Pineda Campos | A01625510
 # <------------------------------------------->
-# To compile and execute in sh: 
+# To compile and execute in sh:
 # python3 main.py
 # <------------------------------------------->
 # Our replit code
@@ -13,6 +13,7 @@
 
 from Automaton import Automaton
 from State import State
+
 
 def main():
     Q1 = State(False, False, "Q1")
@@ -66,9 +67,10 @@ def main():
     print("<------------------> Second Word <-------------------->")
     a = "32.4 *(-8.6 - b)/       6.1"
     automaton.getToken(a)
-    
+
     print("<------------------> Third Word <-------------------->")
     d = "a * b"
     automaton.getToken(d)
+
 
 main()

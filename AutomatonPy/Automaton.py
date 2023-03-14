@@ -1,5 +1,6 @@
 from State import State
 
+
 class Automaton:
     def __init__(self, S):
         self.S = S
@@ -12,9 +13,8 @@ class Automaton:
 
             nextState = currentState.getNextState(symbol)
             currentState = nextState
-            
+
             if currentState.name == "Q1":
                 continue
             else:
                 print("\nToken:", symbol, "\nTipo:", currentState.name)
-
