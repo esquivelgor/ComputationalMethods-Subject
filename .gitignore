@@ -1,2 +1,4 @@
 *.pdf
 myautomaton
+*.pyc
+__pycache__
