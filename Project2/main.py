@@ -1,11 +1,5 @@
 import re
 
-# Expresiones regulares - Categorias
-
-# Keyword (E.g. int, return)         -> G2 | Red
-
-# Operator (E.g. +, =, !)            -> G4
-
 
 def replace2Html(text, color):
     return f"<span style='color: {color}'>{text}</span>"
