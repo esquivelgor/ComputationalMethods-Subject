@@ -16,8 +16,7 @@ def tokenize(file):
     tokenSpecifications = [
         ('Include', r"#[a-z]+"),        # G1 | Pink | Include sentence
         ('Number', r"\d+(\.\d*)?"),     # G2 | Green | Integer of float
-        # G3 | Black | Yeap, puntuaction
-        ('Puntuaction', r'([{}()<>.;:=+,!"])'),
+        ('Puntuaction', r'([{}()<>.;:=+,!"])'), # G3 | Black | Yeap, puntuaction
         ('Space', r"[ \t]"),           # G4 | | Spacess
         ('Tab', r"\n"),                 # G5 | | Tabs
         ('String', r"[a-zA-Z]+"),       # G6 | Orange | Any string
