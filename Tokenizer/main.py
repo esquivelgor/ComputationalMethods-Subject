@@ -14,7 +14,7 @@ def tokenize(file):
     keywords = {'int', 'main', 'std', 'cout',
                 'return', 'endl', 'if', 'true', 'false'}
     tokenSpecifications = [
-        ('Include', r"#[a-z]+"),        # G1 | Pink | Include sentence
+        ('Include', r"#include+"),        # G1 | Pink | Include sentence
         ('Number', r"\d+(\.\d*)?"),     # G2 | Green | Integer of float
         ('Puntuaction', r'([{}()<>.;:=+,!"])'), # G3 | Black | Yeap, puntuaction
         ('Space', r"[ \t]"),           # G4 | | Spacess
