@@ -16,11 +16,12 @@ def tokenize(file):
     tokenSpecifications = [
         ('Include', r"#include+"),        # G1 | Pink | Include sentence
         ('Number', r"\d+(\.\d*)?"),     # G2 | Green | Integer of float
-        ('Puntuaction', r'([{}()<>.;:=+,!"])'), # G3 | Black | Yeap, puntuaction
-        ('Space', r"[ \t]"),           # G4 | | Spacess
-        ('Tab', r"\n"),                 # G5 | | Tabs
-        ('String', r"[a-zA-Z]+"),       # G6 | Orange | Any string
-        ('Keyword', r"[a-zA-Z]+")      # G7 | Brown | Predefined keywords
+        ('Puntuaction', r'([{}()<>.;:=,!"])'), # G3 | Black | Yeap, puntuaction
+        ('Operators', r'+-*/'),        #G4 | Red | Any Operator
+        ('Space', r"[ \t]"),           # G5 | | Spacess
+        ('Tab', r"\n"),                 # G6 | | Tabs
+        ('String', r"[a-zA-Z]+"),       # G7 | Orange | Any string
+        ('Keyword', r"[a-zA-Z]+")      # G8 | Brown | Predefined keywords
     ]
 
     tok_regex = '|'.join('(?P<%s>%s)' % pair for pair in tokenSpecifications)
@@ -38,12 +39,14 @@ def tokenize(file):
                     copy += replace2Html(tok_text, "green")
                 elif (tok_name == "Puntuaction"):
                     copy += replace2Html(tok_text, "#6a329f")
+                elif (tok_name == "Operators"):
+                    copy += replace2Html(tok_text, "red")
                 elif (tok_name == "Space"):
                     copy += "\n"
                 elif (tok_name == "Tab"):
                     copy += "<br>"
                 elif (tok_text in keywords):
-                    copy += replace2Html(tok_text, "red")
+                    copy += replace2Html(tok_text, "brown")
                 elif (tok_name == "String"):
                     copy += replace2Html(tok_text, "black")
                 else:
