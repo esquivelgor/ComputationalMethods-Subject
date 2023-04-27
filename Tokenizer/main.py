@@ -17,7 +17,7 @@ def tokenize(file):
         ('Include', r"#include+"),        # G1 | Pink | Include sentence
         ('Number', r"\d+(\.\d*)?"),     # G2 | Green | Integer of float
         ('Puntuaction', r'([{}()<>.;:=,!"])'), # G3 | Black | Yeap, puntuaction
-        ('Operators', r'+-*/'),        #G4 | Red | Any Operator
+        ('Operators', r'+*'),        #G4 | Red | Any Operator
         ('Space', r"[ \t]"),           # G5 | | Spacess
         ('Tab', r"\n"),                 # G6 | | Tabs
         ('String', r"[a-zA-Z]+"),       # G7 | Orange | Any string
