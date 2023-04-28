@@ -56,5 +56,5 @@ def tokenize(file):
         writeHtml("./final.html", copy)
 
 
-fileURL = "./test.txt"
+fileURL = "./entrada.txt"
 tokenize(fileURL)
