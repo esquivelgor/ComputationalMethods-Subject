@@ -50,7 +50,7 @@ for (node in unique(nodes)) {
 
 curves <- curve_multiple(g, start = 0.8)
 set.seed(10)
-plot(g, edge.arrow.size = .3, vertex.label.cex = 0.8, vertex.size = 35, vertex.frame.color = "gray",
+plot(g, edge.arrow.size = .7, vertex.label.cex = 0.8, vertex.size = 35, vertex.frame.color = "gray",
      vertex.label.color = "black", edge.label = edge.labels, vertex.color = node.colors,
      edge.curved = curves)
 
