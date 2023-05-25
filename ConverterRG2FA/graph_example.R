@@ -4,7 +4,7 @@ library(stringr)
 ## Input user example
 string <- "S -> aA
 B -> a
-S -> bB   
+S -> bB  
 A -> bB
 A -> c
 B -> c"
@@ -16,13 +16,14 @@ string <- str_replace_all(string, "(\n)|([:space:]*\n)", " ")
 edgesCompleted <- str_extract_all(string, "[A-Z] -> [a-z][A-Z]")[[1]]
 edgesFinal  <- str_extract_all(string, "([A-Z] -> [a-z][^A-Z])|[A-Z] -> [a-z](?!.*[A-Z])")[[1]]
 edgesFinalZ <- str_replace_all(edgesFinal, "(?<=[a-z])(?!$)|(?<=[a-z])$", "Z")
-
 stringUpdated <- append(edgesCompleted, edgesFinalZ)
 
 nodes <- unlist(str_extract_all(stringUpdated, "[A-Z]"))
-edge.labels <- unlist(str_extract_all(string, "[a-z]"))
-g <- graph(nodes, directed = TRUE)
 node.types <- c(1, rep(2, length(unique(nodes))-2), 3)
+g <- graph(nodes, directed = TRUE)
+
+edge.labels <- unlist(str_extract_all(stringUpdated, "[a-z]"))
+
 mapping.colors <- c("green","white", "red")
 node.colors <- mapping.colors[node.types]
 
