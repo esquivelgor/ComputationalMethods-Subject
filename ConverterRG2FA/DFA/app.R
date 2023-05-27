@@ -6,7 +6,7 @@ ui <- fluidPage(
   titlePanel("Project 3 Converter"),
   sidebarLayout(
     sidebarPanel(
-      textAreaInput(inputId = "myinputtext", label = "Write your Regular Grammar", rows = 7, cols = 40, resize = "both")
+      textAreaInput(inputId = "myinputtext", label = "Write your regular grammar:", rows = 7, cols = 40, resize = "both")
     ),
     mainPanel(
       plotOutput("graphDFA")
@@ -33,12 +33,19 @@ server <- function(input, output) {
     g <- graph(nodes, directed = TRUE)
     
     uniqueNodes <- unique(nodes)
-    if (length(uniqueNodes) < 2) {
-      node.types <- 1
-    } else {
-      node.types <- c(1, rep(2, length(uniqueNodes) - 2), 3)
+    nodeTypes <- c()
+    for(node in uniqueNodes){
+      if(node == "S"){
+        nodeTypes <- nodeTypes %>% append(1)
+      } else if (node == "Z"){
+        nodeTypes <- nodeTypes %>% append(3)
+        }
+      else {
+        nodeTypes <- nodeTypes %>% append(2) 
+      }
     }
     
+    node.types <- nodeTypes
     mapping.colors <- c("green","white", "red")
     node.colors <- mapping.colors[node.types]
     

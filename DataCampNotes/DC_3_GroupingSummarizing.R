@@ -36,4 +36,37 @@ gapminder %>%
   group_by(continent, year) %>%
   summarise(medianLifeExp = median(lifeExp), maxGdpPercap = max(gdpPercap))
 
-max(gapminder$year)
+by_year <- gapminder %>%
+  group_by(year) %>%
+  summarize(medianLifeExp = median(lifeExp),
+            maxGdpPercap = max(gdpPercap))
+
+# Create a scatter plot showing the change in medianLifeExp over time
+ggplot(by_year, aes(x = year, y = medianLifeExp)) +
+  geom_point() +
+  expand_limits(y = 0)
+
+# Summarize medianGdpPercap within each continent within each year: by_year_continent
+by_year_continent <- gapminder %>%
+  group_by(continent, year) %>%
+  summarise(medianGdpPercap = median(gdpPercap), .groups = "drop")
+
+ggplot(by_year_continent, aes(x = year, y = medianGdpPercap), color = continent) +
+  geom_point() +
+  expand_limits(y = 0 )
+
+# Summarize the median GDP and median life expectancy per continent in 2007
+by_continent_2007 <- gapminder %>%
+  filter(year == 2007) %>%
+  group_by(continent, year) %>%
+  summarise(medianLifeExp = median(lifeExp), medianGdpPercap = median(gdpPercap), .groups = "drop")
+
+ggplot(by_continent_2007, aes(x = medianGdpPercap, y = medianLifeExp,  color = continent)) +
+  geom_point() 
+
+
+
+
+
+
+
