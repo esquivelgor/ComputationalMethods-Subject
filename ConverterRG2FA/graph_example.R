@@ -11,7 +11,7 @@ A -> c
 B -> c"
 
 # Formatted data
-string <- str_replace_all(stringg, "(\n)|([:space:]*\n)", " ")
+string <- str_replace_all(string, "(\n)|([:space:]*\n)", " ")
 
 ## Extract the edges
 edgesCompleted <- str_extract_all(string, "[A-Z] -> [a-z][A-Z]")[[1]]
@@ -46,7 +46,7 @@ set.seed(12)
 plot(g, edge.arrow.size = 0.5, vertex.label.cex = 0.8, vertex.size = 35,
      vertex.frame.color = "gray", vertex.label.color = "black",
      edge.label = edge.labels, vertex.color = node.colors, edge.curved = curves)
-})
+
 
 # Clear
 rm(list = ls())
