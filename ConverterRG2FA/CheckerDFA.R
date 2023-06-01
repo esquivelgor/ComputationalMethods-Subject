@@ -5,13 +5,16 @@ string <- "(S,B,a)
 (S,A,b)
 (B,A,b)
 (B,C.,-)
+(B,C.,a)
+(A,B,a)
+(A,C,b)
+(C,B,a)
+(C,B,b)
 "
 string2 <- "(S,B,a)
 (S,A,b)
 (B,A,b)
-(B,C.,-)
-(C,B,a)
-(C,B,b)"
+(B,C.,-)"
 
 # Formatted data
 string <- str_replace_all(string, "(\n)|([:space:]*\n)", " ")
@@ -25,7 +28,7 @@ string <- append(edgesCompleted, edgesFinal)
 coupleNodesCompleted <- unlist(str_extract_all(edgesCompleted, "[A-Z]"))
 coupleNodesFinal <- unlist(str_extract_all(edgesFinal, "(?!S)[A-Z]"))
 nodesFinal <- gsub("\\.","",unique(unlist(str_extract_all(edgesFinal, "(?!S)[A-Z]\\."))))
-nodes <- append(coupleNodesCompleted, nodesFinal)
+nodes <- append(coupleNodesCompleted, coupleNodesFinal)
 uniqueNodes <- unique(nodes)
 
 ## Number of nodes
@@ -38,35 +41,36 @@ nAlphabet <- length(uniqueAlphabet)
   
 
 ## ------------------ Testing -------------------------
-(sum(grepl(paste0("S,[A-Z].?,", "[a]"), string)) > 0)
-grepl(paste0("S,[A-Z].?,", "[a]"),string)
+sum(grepl("C,[A-Z].?,[a]", string))
 
-sum(grepl("[A-Z],C.,[a]", string)) & sum(grepl("[A-Z],C.,[b]", string))
 
+sum(grepl("C,[A-Z].?,[b]", string))
+grepl(paste(node, ",[A-Z].?,[a]", sep = ""), string)
 ## ------------------ Testing -------------------------
 
 nodeTypes <- c()
 for(node in uniqueNodes){
+  print(node)
     if(node == "S"){
-      for (alphabet in uniqueAlphabet){
-        if((sum(grepl("S,[A-Z].?,[a]", string)) & sum(grepl("S,[A-Z].?,[b]", string))) == TRUE){
-          nodeTypes <- nodeTypes %>% append(1)  
-        } else {
-          nodeTypes <- nodeTypes %>% append(4)  
-        }
-      }
-    } else if (node %in% nodesFinal){
-      if((sum(grepl("[A-Z],C.,[a]", string)) & sum(grepl("[A-Z],C.,[b]", string))) == TRUE){
-        nodeTypes <- nodeTypes %>% append(3)  
+      if((sum(grepl("S,[A-Z].?,[a]", string)) & sum(grepl("S,[A-Z].?,[b]", string))) == TRUE){
+        nodeTypes <- nodeTypes %>% append(1)  
       } else {
         nodeTypes <- nodeTypes %>% append(4)  
       }
-      
+    } else if (node %in% nodesFinal){
+      if(sum(grepl(paste(node, ",[A-Z].?,[a]", sep = ""), string)) & sum(grepl(paste(node,",[A-Z].?,[b]", sep = ""), string)) == TRUE){
+        nodeTypes <- nodeTypes %>% append(3)  
+      } else {  
+        nodeTypes <- nodeTypes %>% append(4)
+        }
     }
     else {
-      nodeTypes <- nodeTypes %>% append(2) 
+      if(sum(grepl(paste(node, ",[A-Z].?,[a]", sep = ""), string)) & sum(grepl(paste(node,",[A-Z].?,[b]", sep = ""), string)) == TRUE){
+        nodeTypes <- nodeTypes %>% append(2) 
+      } else {  
+        nodeTypes <- nodeTypes %>% append(4)
+      }
     }
-  
 }
 
 node.types <- nodeTypes
@@ -84,4 +88,4 @@ plot(g, edge.arrow.size=.3, vertex.label.cex=0.8, vertex.size=35,vertex.frame.co
 
 
 # Clear
-rm(list = ls())
+#rm(list = ls())

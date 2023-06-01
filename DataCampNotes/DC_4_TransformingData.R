@@ -46,3 +46,16 @@ counties %>%
   filter(population > 10000) %>%
   # Arrange proportion of men in descending order 
   arrange(desc(proportion_men))
+
+counties_selected %>%
+  # Group by region
+  group_by(region) %>%
+  # Find the county with the highest percentage of people who walk to work
+  slice_max(walk, n = 1)
+
+counties_selected %>%
+  group_by(region, state) %>%
+  # Calculate average income
+  summarise(average_income = mean(income)) %>%
+  # Find the lowest income state in each region
+  slice_min(average_income, n = 1)
