@@ -1,17 +1,21 @@
 library(igraph)
 library(stringr)
 # Input user example
-string2 <- "(S,B,a)
+string <- "(S,B,a)
 (S,A,b)
+(S,E,c)
 (B,A,b)
 (B,C.,-)
 (B,C.,a)
 (A,B,a)
 (A,C,b)
-(C,B,a)
+(A,E,c)
+(C,B,c)
 (C,B,b)
+(C,A,a)
+
 "
-string <- "(S,B,a)
+string2 <- "(S,B,a)
 (S,A,b)
 (B,A,b)
 (B,C.,-)"
@@ -38,25 +42,43 @@ nNodesFinal <- length(gsub("\\.","",unique(unlist(str_extract_all(edgesFinal, "(
 ## Alphabet
 uniqueAlphabet <- unique(unlist(str_extract_all(string, "[a-z]")))
 nAlphabet <- length(uniqueAlphabet)
-  
+
 nodeTypes <- c()
 for(node in uniqueNodes){
-  print(node)
     if(node == "S"){
-      if((sum(grepl("S,[A-Z].?,[a]", string)) & sum(grepl("S,[A-Z].?,[b]", string))) == TRUE){
-        nodeTypes <- nodeTypes %>% append(1)  
-      } else {
-        nodeTypes <- nodeTypes %>% append(4)  
+      nAlphabetCheck = 0
+      for(alphabet in uniqueAlphabet){
+        if((sum(grepl(paste("S,[A-Z].?,[", alphabet, "]", sep = ""), string))) == TRUE){
+          nAlphabetCheck = nAlphabetCheck + 1  
+        } 
       }
+      if(nAlphabetCheck == nAlphabet){
+        nodeTypes <- nodeTypes %>% append(1)
+      } else {
+          nodeTypes <- nodeTypes %>% append(4)  
+        } 
+      
     } else if (node %in% nodesFinal){
-      if(sum(grepl(paste(node, ",[A-Z].?,[a]", sep = ""), string)) & sum(grepl(paste(node,",[A-Z].?,[b]", sep = ""), string)) == TRUE){
+      nAlphabetCheck = 0
+      for(alphabet in uniqueAlphabet){
+        if(sum(grepl(paste(node, ",[A-Z].?,[", alphabet, "]", sep = ""), string)) == TRUE){
+          nAlphabetCheck = nAlphabetCheck + 1
+        }
+      }
+      if(nAlphabetCheck == nAlphabet){
         nodeTypes <- nodeTypes %>% append(3)  
       } else {  
         nodeTypes <- nodeTypes %>% append(4)
-        }
+      }
     }
     else {
-      if(sum(grepl(paste(node, ",[A-Z].?,[a]", sep = ""), string)) & sum(grepl(paste(node,",[A-Z].?,[b]", sep = ""), string)) == TRUE){
+      nAlphabetCheck = 0
+      for(alphabet in uniqueAlphabet){
+        if(sum(grepl(paste(node, ",[A-Z].?,[", alphabet, "]", sep = ""), string)) == TRUE){
+          nAlphabetCheck = nAlphabetCheck + 1
+        }
+      }
+      if(nAlphabetCheck == nAlphabet){
         nodeTypes <- nodeTypes %>% append(2) 
       } else {  
         nodeTypes <- nodeTypes %>% append(4)
