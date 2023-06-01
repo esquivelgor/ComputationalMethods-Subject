@@ -1,7 +1,7 @@
 library(igraph)
 library(stringr)
 # Input user example
-string <- "(S,B,a)
+string2 <- "(S,B,a)
 (S,A,b)
 (B,A,b)
 (B,C.,-)
@@ -11,7 +11,7 @@ string <- "(S,B,a)
 (C,B,a)
 (C,B,b)
 "
-string2 <- "(S,B,a)
+string <- "(S,B,a)
 (S,A,b)
 (B,A,b)
 (B,C.,-)"
@@ -39,15 +39,6 @@ nNodesFinal <- length(gsub("\\.","",unique(unlist(str_extract_all(edgesFinal, "(
 uniqueAlphabet <- unique(unlist(str_extract_all(string, "[a-z]")))
 nAlphabet <- length(uniqueAlphabet)
   
-
-## ------------------ Testing -------------------------
-sum(grepl("C,[A-Z].?,[a]", string))
-
-
-sum(grepl("C,[A-Z].?,[b]", string))
-grepl(paste(node, ",[A-Z].?,[a]", sep = ""), string)
-## ------------------ Testing -------------------------
-
 nodeTypes <- c()
 for(node in uniqueNodes){
   print(node)
@@ -86,6 +77,3 @@ curves <- curve_multiple(g, start = 0.8)
 set.seed(10)
 plot(g, edge.arrow.size=.3, vertex.label.cex=0.8, vertex.size=35,vertex.frame.color="gray", vertex.label.color="black",  edge.label = edge.labels, vertex.color = node.colors, edge.curved=curves )
 
-
-# Clear
-#rm(list = ls())
