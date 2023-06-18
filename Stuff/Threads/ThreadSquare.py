@@ -23,7 +23,7 @@ if __name__ == "__main__":
 
     # Multithreaded execution
     start_time = time.time()
-    num_threads = 4  # Number of threads to use
+    num_threads = 8  # Number of threads to use
     chunk_size = len(numbers) // num_threads
     threads = []
     results = [[] for _ in range(num_threads)]

@@ -1,65 +1,25 @@
-# Implentation of computational methods | C1
+# Implementation of Computational Methods | 4th Semester
+
 > Professor: Enrique Garcia Ceja
 
-## Sets and functions
+This repository contains various projects developed during the course of Computational Methods in the 4th semester. The projects cover a range of topics, including the implementation of an automaton, a converter from regular grammar to finite automaton, and a basic tokenizer.
 
-### Operations: Cartesian product
+## Projects Overview
 
-A x B is the set of all pairs such that a is in A and b is in B.
+1. Web Dashboard for Regular Grammar:
+   - The code is written in R and utilizes the Shiny framework to create a web-based dashboard. The dashboard consists of two tabs: "Regular Grammar" and "Transitions". 
+   - In the "Regular Grammar" tab, users can input a regular grammar in a text area. The input text is then processed to extract edges and nodes from the grammar. The extracted information is used to create a directed graph using the `igraph` library. The graph is plotted with arrows, labels, and colors corresponding to the edges and nodes.
+   - The "Transitions" tab allows users to input a specific format of transitions in a text area. Similar to the "Regular Grammar" tab, the input text is processed to extract edges and nodes. These edges and nodes are used to create a directed graph, and the graph is plotted with appropriate labels and colors.
+   - Both tabs provide an interactive visualization of the graphs based on the user input. The application makes use of various R libraries such as `shiny`, `igraph`, and `shinydashboard` to create the interactive dashboard.
 
-> What's cardinality?
-> It's the numeber of elements in the set
+2. Automaton Implementation:
+   - This project focuses on implementing an automaton using Python. It separates the input (a string) into tokens and analyses to which category does it belong to.
 
-### Partitions
-A partition P is aset of non empty subsets of A such that every element is in exactly one subset.
-
-### Operations: Power set
-Is the set of all possible subsets of A.
-
-### Distance between two sets A and B 
-
-- It's useful for machine learning
-- The Jaccard index between two sets is defined by:
-  - $J(A, B) = |A у B| / |A U B|$
-  - $J_1 = 1 - J(A,B)$
-
-### Relation
-
-- A relation is symmetric if $(a,b) \in R \And (b,a) \in R$
+3. Basic Tokenizer:
+   - The project is a Python script that performs tokenization on an input file and generates an HTML file with syntax highlighting for different categories of tokens. It uses regular expressions to identify tokens and applies HTML styling to format them appropriately. The resulting HTML file displays the tokens with different colors based on their categories.
 
 
-# C2
 
-## Symbol
-- The most basic unit of a language is a symbol
-## Alphabet
-- It is denoted with $\sum$
-- English alphabet is $\sum{a, b, ..., z}$
+## License
 
-## Length
-- Is denoted with $|x|$
-
-## Prefix
-- $p$ is a prefix of $w$ if there exist a string $y$ such that $w=py$
-
-# Language
-## Power
-- The power of a language L is:
-- $L^n=$
-
-### Chomsky Hierarchy
-
-# Deterministic Finite Automata | C3
-
-
-## Accepted words (languages)
-- Finite automatons can be used to recognize words
-- A wprd
-
-
-$\sigma = {
-    ((q_0,0),q_1),((q_0,1),q_2),
-    ((q_1,0),q_3),((q_1,1),q_0),
-    ((q_1,0),q_0),((q_1,1),q_0),
-    ((q_1,0),q_0),((q_1,1),q_0)
-}$
+This project is licensed under the [MIT License](LICENSE). Feel free to use and modify the code as per your needs.

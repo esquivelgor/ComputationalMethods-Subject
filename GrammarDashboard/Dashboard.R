@@ -9,7 +9,7 @@ ui <- dashboardPage(
   dashboardSidebar(
     sidebarMenu(
       menuItem("Regular Grammar", tabName = "option1", icon = icon("spell-check")),
-      menuItem("Transicions", tabName = "option2", icon = icon("circle-xmark"))
+      menuItem("Transitions", tabName = "option2", icon = icon("circle-xmark"))
     )
   ),
   dashboardBody(
@@ -23,8 +23,8 @@ ui <- dashboardPage(
       
       # Option2 ----------------------------------------------------------------------
       tabItem(tabName = "option2",
-              h2("Transicions"),
-              textAreaInput(inputId = "myinputtext2", label = "Write your Regular Grammar", rows = 7, cols = 40, resize = "both"),
+              h2("Transitions"),
+              textAreaInput(inputId = "myinputtext2", label = "Write your Grammar", rows = 7, cols = 40, resize = "both"),
               plotOutput("graphDFA2")
       )
     )
