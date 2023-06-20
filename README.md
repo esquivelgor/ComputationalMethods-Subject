@@ -9,9 +9,10 @@ This repository contains various projects developed during the course of Computa
 1. Web Dashboard for Regular Grammar:
    - The code is written in R and utilizes the Shiny framework to create a web-based dashboard. The dashboard consists of two tabs: "Regular Grammar" and "Transitions". 
    - In the "Regular Grammar" tab, users can input a regular grammar in a text area. The input text is then processed to extract edges and nodes from the grammar. The extracted information is used to create a directed graph using the `igraph` library. The graph is plotted with arrows, labels, and colors corresponding to the edges and nodes.
+   - ![e](./transitions.png) 
    - The "Transitions" tab allows users to input a specific format of transitions in a text area. Similar to the "Regular Grammar" tab, the input text is processed to extract edges and nodes. These edges and nodes are used to create a directed graph, and the graph is plotted with appropriate labels and colors.
    - Both tabs provide an interactive visualization of the graphs based on the user input. The application makes use of various R libraries such as `shiny`, `igraph`, and `shinydashboard` to create the interactive dashboard.
-
+   - ![](./rg.png) 
 2. Automaton Implementation:
    - This project focuses on implementing an automaton using Python. It separates the input (a string) into tokens and analyses to which category does it belong to.
 
